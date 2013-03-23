@@ -1,0 +1,2 @@
+runtime "java"
+exec "./target/singletrack-tweeter-1.0.jar"
