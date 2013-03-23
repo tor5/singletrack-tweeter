@@ -1,5 +1,6 @@
 package org.tobyorourke.tweeter.infrastructure;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -14,7 +15,10 @@ import org.tobyorourke.tweeter.model.MessageBoard;
 import org.tobyorourke.tweeter.model.Topic;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -67,8 +71,7 @@ public class JSoupMessageBoardImpl implements MessageBoard {
 	}
 
 	private String cleanTitle(String rawTitle){
-		rawTitle = rawTitle.replace("&quot;", "\"");
-		rawTitle = rawTitle.replace("&pound;", "£");
+		rawTitle = StringEscapeUtils.unescapeHtml4(rawTitle);
 		if (rawTitle.contains("\"")) {
 			return rawTitle.substring(rawTitle.indexOf("\"") + 1, rawTitle.length() - 1);
 		} else {
