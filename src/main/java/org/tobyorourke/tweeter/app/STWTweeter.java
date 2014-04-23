@@ -109,7 +109,8 @@ public class STWTweeter {
 				.setOAuthConsumerKey(twitterConsumerKey)
 				.setOAuthConsumerSecret(twitterConsumerSecret)
 				.setOAuthAccessToken(twitterAccessToken)
-				.setOAuthAccessTokenSecret(twitterAccessTokenSecret);
+				.setOAuthAccessTokenSecret(twitterAccessTokenSecret)
+				.setUseSSL(true);
 		TwitterFactory tf = new TwitterFactory(cb.build());
 		return tf.getInstance();
 	}
